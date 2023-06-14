@@ -7,12 +7,14 @@ class StokBarang extends CI_Controller
   {
     parent::__construct();
     $this->load->model("stokbarang_model");
+    $this->load->model("barang_model");
     error_reporting(0);
     // $this->load->library('form_validation');
   }
 
   public function index()
   {
+    if ($this->session->userdata('level') == 2) redirect('admin');
     $data['title'] = 'Stok Barang';
     $data['barang'] = $this->barang_model->getAll();
     $data['stokbarang'] = $this->stokbarang_model->getBarang();

@@ -37,10 +37,8 @@ class stokbarang_model extends CI_Model
   {
     $post = $this->input->post();
     $this->id_persediaan = $post["id_persediaan"];
-    $this->id_barang = $post["id_barang"];
     $this->stok_barang = $post["stok_barang"];
     $this->stok_minimum = $post["stok_minimum"];
-    $this->id_barang = $post["id_barang"];
     $this->db->update($this->_table, $this, array('id_persediaan' => $post['id_persediaan']));
   }
 

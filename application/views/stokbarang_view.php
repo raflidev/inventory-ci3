@@ -22,20 +22,20 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group focused">
-                    <label class="form-control-label" for="no_bukti">No Bukti<span class="small text-danger">*</span></label>
-                    <input type="text" id="no_bukti" class="form-control" name="no_bukti" placeholder="No Bukti">
+                    <label class="form-control-label" for="id_barang">Barang<span class="small text-danger">*</span></label>
+                    <select class="form-control" name="id_barang" id="id_barang">
+                      <?php foreach ($barang as $data) : ?>
+                        <option value="<?= $data->id_barang ?>"><?= $data->id_barang . " - " . $data->nama_barang ?></option>
+                      <?php endforeach ?>
+                    </select>
                   </div>
                   <div class="form-group focused">
-                    <label class="form-control-label" for="tgl_masuk">Tanggal Masuk<span class="small text-danger">*</span></label>
-                    <input type="date" id="tgl_masuk" class="form-control" name="tgl_masuk" placeholder="tgl_masuk">
+                    <label class="form-control-label" for="stok_barang">Stok Barang<span class="small text-danger">*</span></label>
+                    <input type="number" id="stok_barang" class="form-control" name="stok_barang" placeholder="Stok Barang">
                   </div>
                   <div class="form-group focused">
-                    <label class="form-control-label" for="pengurus">Pengurus<span class="small text-danger">*</span></label>
-                    <input type="text" id="pengurus" class="form-control" name="pengurus" placeholder="Pengurus">
-                  </div>
-                  <div class="form-group focused">
-                    <label class="form-control-label" for="ket_masuk">Keterangan Masuk<span class="small text-danger">*</span></label>
-                    <input type="text" id="ket_masuk" class="form-control" name="ket_masuk" placeholder="Keterangan Masuk">
+                    <label class="form-control-label" for="stok_minimum">Stok Minimum<span class="small text-danger">*</span></label>
+                    <input type="number" id="stok_minimum" class="form-control" name="stok_minimum" placeholder="Stok Minimum">
                   </div>
                 </div>
               </div>
@@ -65,24 +65,16 @@
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <input type="hidden" name="_method" value="PUT">
           <div class="">
-            <input type="hidden" id="id_edit" class="form-control" name="id_bmasuk">
+            <input type="hidden" id="id_edit" class="form-control" name="id_persediaan">
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group focused">
-                  <label class="form-control-label" for="no_bukti">No Bukti<span class="small text-danger">*</span></label>
-                  <input type="text" id="no_bukti_edit" class="form-control" name="no_bukti" placeholder="No Bukti">
+                  <label class="form-control-label" for="stok_barang">Stok Barang<span class="small text-danger">*</span></label>
+                  <input type="number" id="stok_barang_edit" class="form-control" name="stok_barang" placeholder="Stok Barang">
                 </div>
                 <div class="form-group focused">
-                  <label class="form-control-label" for="tgl_masuk">Tanggal Masuk<span class="small text-danger">*</span></label>
-                  <input type="date" id="tgl_masuk_edit" class="form-control" name="tgl_masuk" placeholder="tgl_masuk">
-                </div>
-                <div class="form-group focused">
-                  <label class="form-control-label" for="pengurus">Pengurus<span class="small text-danger">*</span></label>
-                  <input type="text" id="pengurus_edit" class="form-control" name="pengurus" placeholder="Pengurus">
-                </div>
-                <div class="form-group focused">
-                  <label class="form-control-label" for="ket_masuk">Keterangan Masuk<span class="small text-danger">*</span></label>
-                  <input type="text" id="ket_masuk_edit" class="form-control" name="ket_masuk" placeholder="Keterangan Masuk">
+                  <label class="form-control-label" for="stok_minimum">Stok Minimum<span class="small text-danger">*</span></label>
+                  <input type="number" id="stok_minimum_edit" class="form-control" name="stok_minimum" placeholder="Stok Minimum">
                 </div>
               </div>
             </div>
@@ -130,7 +122,9 @@
                 <th>Satuan</th>
                 <th>Gudang</th>
                 <th>Rak</th>
-                <th></th>
+                <th>Keterangan</th>
+                <th>Stok Barang</th>
+                <th>Stok Minimum</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -143,7 +137,9 @@
                 <th>Satuan</th>
                 <th>Gudang</th>
                 <th>Rak</th>
-                <th></th>
+                <th>Keterangan</th>
+                <th>Stok Barang</th>
+                <th>Stok Minimum</th>
                 <th>Aksi</th>
               </tr>
             </tfoot>
@@ -152,19 +148,22 @@
               foreach ($stokbarang as $data) : ?>
                 <tr>
                   <td><?= $no ?></td>
-                  <td><?= $data->no_bukti ?></td>
-                  <td><?= $data->tgl_masuk ?></td>
-                  <td><?= $data->pengurus ?></td>
-                  <td><?= $data->ket_masuk ?></td>
+                  <td><?= $data->nama_barang ?></td>
+                  <td><?= $data->jenis ?></td>
+                  <td><?= $data->merk ?></td>
+                  <td><?= $data->satuan ?></td>
+                  <td><?= $data->gudang ?></td>
+                  <td><?= $data->rak ?></td>
+                  <td><?= $data->keterangan ?></td>
+                  <td><?= $data->stok_barang ?></td>
+                  <td><?= $data->stok_minimum ?></td>
                   <td>
-                    <form action="<?= base_url('stokbarang/hapus/'), $data->id_bmasuk ?>" method="POST">
-                      <button type="button" class="btn btn-warning btn-sm open_modal" data-toggle="modal" value="<?= $data->id_bmasuk ?>" data-target="#EditModal">
+                    <form action="<?= base_url('stokbarang/hapus/'), $data->id_persediaan ?>" method="POST">
+                      <button type="button" class="btn btn-warning btn-sm open_modal" data-toggle="modal" value="<?= $data->id_persediaan ?>" data-target="#EditModal">
                         Edit
                       </button>
                       <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     </form>
-
-
                   </td>
                 </tr>
                 <?php $no++ ?>
@@ -210,11 +209,9 @@
       //success data
       data = JSON.parse(data);
       console.log(data);
-      $('#id_edit').val(data.id_bmasuk);
-      $('#no_bukti_edit').val(data.no_bukti);
-      $('#tgl_masuk_edit').val(data.tgl_masuk);
-      $('#pengurus_edit').val(data.pengurus);
-      $('#ket_masuk_edit').val(data.ket_masuk);
+      $('#id_edit').val(data.id_persediaan);
+      $('#stok_barang_edit').val(data.stok_barang);
+      $('#stok_minimum_edit').val(data.stok_minimum);
     })
   });
 </script>
