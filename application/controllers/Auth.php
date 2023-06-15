@@ -6,6 +6,7 @@ class Auth extends CI_Controller
 
   public function index()
   {
+    if ($this->session->has_userdata('level')) return redirect('admin');
     $data['title'] = 'Login';
     $this->load->view('_part/login_head', $data);
     $this->load->view('login_v');
