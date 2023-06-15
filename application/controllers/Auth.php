@@ -12,14 +12,6 @@ class Auth extends CI_Controller
     $this->load->view('_part/login_footer');
   }
 
-  public function forgotpass()
-  {
-    $data['title'] = 'Recovery password';
-    $this->load->view('_part/login_head', $data);
-    $this->load->view('forgotpass_v');
-    $this->load->view('_part/login_footer');
-  }
-
   public function login()
   {
     $post = $this->input->post();
@@ -34,7 +26,8 @@ class Auth extends CI_Controller
         $data = [
           'username' => $user->username,
           'nama_lengkap' => $user->nama_lengkap,
-          'level' => $user->level
+          'level' => $user->level,
+          'foto_profil' => $user->foto_profil,
         ];
         $this->session->set_userdata($data);
 
@@ -55,7 +48,7 @@ class Auth extends CI_Controller
 
   public function register()
   {
-    $data['title'] = 'Recovery password';
+    $data['title'] = 'Register';
     $this->load->view('_part/login_head', $data);
     $this->load->view('register_v');
     $this->load->view('_part/login_footer');

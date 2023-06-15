@@ -22,19 +22,45 @@ class user_model extends CI_Model
   public function save()
   {
     $post = $this->input->post();
+
+    $config['upload_path']          = './upload/user/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    $config['file_name']            = uniqid();
+    $config['overwrite']            = true;
+
+    $this->load->library('upload', $config);
+
+    if ($this->upload->do_upload('foto_profil')) {
+      $this->foto_profil = $this->upload->data("file_name");
+    } else {
+      $this->foto_profil = "default.jpg";
+    }
+
+
     $this->username = $post["username"];
     $this->password = $post["password"];
     $this->nama_lengkap = $post["nama_lengkap"];
     $this->level = $post["level"];
     $this->email = $post["email"];
     $this->no_telp = $post["no_telp"];
-    $this->foto_profil = $post["foto_profil"];
     $this->db->insert($this->_table, $this);
   }
 
   public function edit()
   {
     $post = $this->input->post();
+
+    $config['upload_path']          = './upload/user/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    $config['file_name']            = uniqid();
+    $config['overwrite']            = true;
+
+    $this->load->library('upload', $config);
+
+    if ($this->upload->do_upload('foto_profil')) {
+      $this->foto_profil = $this->upload->data("file_name");
+    }
+
     $this->id_user = $post["id_user"];
     $this->username = $post["username"];
     $this->password = $post["password"];
@@ -42,7 +68,6 @@ class user_model extends CI_Model
     $this->level = $post["level"];
     $this->email = $post["email"];
     $this->no_telp = $post["no_telp"];
-    $this->foto_profil = $post["foto_profil"];
     $this->db->update($this->_table, $this, array('id_user' => $post['id_user']));
   }
 
