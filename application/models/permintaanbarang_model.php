@@ -22,6 +22,7 @@ class permintaanbarang_model extends CI_Model
     $this->jabatan_permintaan = $post["jabatan_permintaan"];
     $this->ket_peminta = $post["ket_peminta"];
     $this->status = 0;
+    $this->tanggal = (new \DateTime())->format('Y-m-d H:i:s');
     $this->db->insert($this->_table, $this);
   }
 

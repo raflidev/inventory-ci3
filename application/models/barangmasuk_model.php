@@ -21,6 +21,7 @@ class barangmasuk_model extends CI_Model
     $this->tgl_masuk = $post["tgl_masuk"];
     $this->pengurus = $post["pengurus"];
     $this->ket_masuk = $post["ket_masuk"];
+    $this->tanggal = (new \DateTime())->format('Y-m-d H:i:s');
     $this->db->insert($this->_table, $this);
   }
 

@@ -21,6 +21,7 @@ class barangkeluar_model extends CI_Model
     $this->tgl_keluar = $post["tgl_keluar"];
     $this->pengurus = $post["pengurus"];
     $this->ket_keluar = $post["ket_keluar"];
+    $this->tanggal = (new \DateTime())->format('Y-m-d H:i:s');
     $this->db->insert($this->_table, $this);
   }
 

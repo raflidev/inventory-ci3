@@ -39,6 +39,7 @@ class barang_model extends CI_Model
     $this->gudang = $post["gudang"];
     $this->rak = $post["rak"];
     $this->keterangan = $post["keterangan"];
+    $this->tanggal = (new \DateTime())->format('Y-m-d H:i:s');
     $this->db->insert($this->_table, $this);
   }
 

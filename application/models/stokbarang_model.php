@@ -30,6 +30,7 @@ class stokbarang_model extends CI_Model
     $this->stok_barang = $post["stok_barang"];
     $this->stok_minimum = $post["stok_minimum"];
     $this->id_barang = $post["id_barang"];
+    $this->tanggal = (new \DateTime())->format('Y-m-d H:i:s');
     $this->db->insert($this->_table, $this);
   }
 
