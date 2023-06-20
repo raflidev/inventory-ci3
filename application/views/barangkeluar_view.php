@@ -152,6 +152,7 @@
                   <td><?= $data->ket_keluar ?></td>
                   <td>
                     <form action="<?= base_url('barangkeluar/hapus/'), $data->id_bkeluar ?>" method="POST">
+                      <a href="<?= base_url("/tbarangkeluar/index/$data->id_bkeluar") ?>" class="btn btn-info btn-sm">Isi Barang</a>
                       <button type="button" class="btn btn-warning btn-sm open_modal" data-toggle="modal" value="<?= $data->id_bkeluar ?>" data-target="#EditModal">
                         Edit
                       </button>

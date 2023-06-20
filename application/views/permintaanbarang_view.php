@@ -171,6 +171,7 @@
                   </td>
                   <td>
                     <form action="<?= base_url('permintaanbarang/hapus/'), $data->id_permintaan ?>" method="POST">
+                      <a href="<?= base_url("/tpermintaan/index/$data->id_permintaan") ?>" class="btn btn-info btn-sm">Isi Barang</a>
                       <?php if ($this->session->userdata('level') == 2 && !($data->status == 1 || $data->status == 2)) : ?>
                         <button type="button" class="btn btn-warning btn-sm open_modal" data-toggle="modal" value="<?= $data->id_permintaan ?>" data-target="#EditModal">
                           Edit
