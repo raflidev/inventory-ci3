@@ -14,6 +14,7 @@ class Pelanggan extends CI_Controller
   public function index()
   {
     if ($this->session->userdata('level') == 2) redirect('admin');
+    if ($this->session->userdata('level') == FALSE) redirect('/');
     $data['title'] = 'Pelanggan';
     $data['pelanggan'] = $this->pelanggan_model->getAll();
     $this->load->view('_part/backend_head', $data);

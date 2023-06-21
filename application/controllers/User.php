@@ -14,6 +14,7 @@ class User extends CI_Controller
   public function index()
   {
     if ($this->session->userdata('level') !== "3") redirect('admin');
+    if ($this->session->userdata('level') == FALSE) redirect('/');
     $data['title'] = 'User Manajemen';
     $data['user'] = $this->user_model->getAll();
     $this->load->view('_part/backend_head', $data);

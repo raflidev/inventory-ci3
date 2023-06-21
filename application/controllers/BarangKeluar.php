@@ -14,6 +14,7 @@ class BarangKeluar extends CI_Controller
   public function index()
   {
     if ($this->session->userdata('level') == 2) redirect('admin');
+    if ($this->session->userdata('level') == FALSE) redirect('/');
     $data['title'] = 'Barang Keluar';
     $data['barangkeluar'] = $this->barangkeluar_model->getAll();
     $this->load->view('_part/backend_head', $data);

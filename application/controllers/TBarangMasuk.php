@@ -13,6 +13,7 @@ class TBarangMasuk extends CI_Controller
   public function index($id)
   {
     if ($this->session->userdata('level') == 2) redirect('admin');
+    if ($this->session->userdata('level') == FALSE) redirect('/');
     $data['title'] = 'Transaksi Barang Masuk';
     $data['data'] = $this->db->query("SELECT * FROM tr_masuk inner join user on tr_masuk.id_user=user.id_user inner join barang on tr_masuk.id_barang=barang.id_barang inner join pemasok on tr_masuk.id_pemasok=pemasok.id_pemasok where id_bmasuk='$id'")->result();
     $data['barang'] = $this->db->query("SELECT * FROM barang")->result();

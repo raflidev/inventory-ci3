@@ -12,7 +12,8 @@ class TPermintaan extends CI_Controller
 
   public function index($id)
   {
-    if ($this->session->userdata('level') == 2) redirect('admin');
+    if ($this->session->userdata('level') == 3) redirect('admin');
+    if ($this->session->userdata('level') == FALSE) redirect('/');
     $data['title'] = 'Transaksi Barang Permintaan';
     $data['data'] = $this->db->query("SELECT * FROM tr_permintaan inner join user on tr_permintaan.id_user=user.id_user inner join barang on tr_permintaan.id_barang=barang.id_barang where id_permintaan='$id'")->result();
     $data['barang'] = $this->db->query("SELECT * FROM barang")->result();

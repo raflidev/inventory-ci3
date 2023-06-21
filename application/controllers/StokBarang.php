@@ -15,6 +15,7 @@ class StokBarang extends CI_Controller
   public function index()
   {
     if ($this->session->userdata('level') == 2) redirect('admin');
+    if ($this->session->userdata('level') == FALSE) redirect('/');
     $data['title'] = 'Stok Barang';
     $data['barang'] = $this->barang_model->getAll();
     $data['stokbarang'] = $this->stokbarang_model->getBarang();

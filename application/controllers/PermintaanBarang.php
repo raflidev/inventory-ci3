@@ -13,6 +13,8 @@ class PermintaanBarang extends CI_Controller
 
   public function index()
   {
+    if ($this->session->userdata('level') == FALSE) redirect('/');
+    if ($this->session->userdata('level') == 3) redirect('admin');
     $data['title'] = 'Permintaan Barang';
     $data['permintaanbarang'] = $this->permintaanbarang_model->getAll();
     $this->load->view('_part/backend_head', $data);
