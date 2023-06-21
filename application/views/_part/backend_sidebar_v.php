@@ -15,12 +15,14 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?= ($this->uri->segment(1) == "admin" ? 'active' : '') ?>">
-      <a class="nav-link" href="<?= site_url('admin'); ?>">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
-    </li>
+    <?php if ($this->session->userdata('level') == 1) : ?>
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item <?= ($this->uri->segment(1) == "admin" ? 'active' : '') ?>">
+        <a class="nav-link" href="<?= site_url('admin'); ?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+    <?php endif; ?>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

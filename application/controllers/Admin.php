@@ -8,11 +8,21 @@ class Admin extends CI_Controller
   public function index()
   {
     if ($this->session->userdata('level') == FALSE) redirect('/');
+    if ($this->session->userdata('level') == 2) redirect('/permintaanbarang');
+    if ($this->session->userdata('level') == 3) redirect('/user');
     $data['title'] = 'Admin area';
+
+    $data['barang'] = $this->db->count_all('barang');
+    $data['permintaan_barang'] = $this->db->count_all('permintaan_barang');
+    $data['barang_masuk'] = $this->db->count_all('barang_masuk');
+    $data['barang_keluar'] = $this->db->count_all('barang_keluar');
+
+
+
     $this->load->view('_part/backend_head', $data);
     $this->load->view('_part/backend_sidebar_v');
     $this->load->view('_part/backend_topbar_v');
-    $this->load->view('backend/admin_v');
+    $this->load->view('backend/admin_v', $data);
     $this->load->view('_part/backend_footer_v');
     $this->load->view('_part/backend_foot');
   }
