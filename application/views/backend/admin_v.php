@@ -76,8 +76,21 @@
                 </div>
               </div>
             </div>
+
           </div>
 
+          <div class="col-6">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+              </div>
+              <div class="card-body">
+                <div class="chart-bar">
+                  <canvas id="myChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
         </div>
@@ -88,6 +101,8 @@
 
         <!-- Footer -->
         <!-- Bootstrap core JavaScript-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <script src="<?= base_url() ?>assets/backend/vendor/jquery/jquery.min.js"></script>
         <script src="<?= base_url() ?>assets/backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -96,3 +111,26 @@
 
         <!-- Custom scripts for all pages-->
         <script src="<?= base_url() ?>assets/backend/js/sb-admin-2.min.js"></script>
+
+        <script>
+          const ctx = document.getElementById('myChart');
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Barang', 'Pemintaan', 'Barang Masuk', 'Barang Keluar'],
+              datasets: [{
+                label: 'Jumlah',
+                data: [<?= $barang ?>, <?= $permintaan_barang ?>, <?= $barang_masuk ?>, <?= $barang_keluar ?>],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        </script>
