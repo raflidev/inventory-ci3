@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2023 at 04:43 AM
+-- Generation Time: Jul 04, 2023 at 02:23 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -71,7 +71,8 @@ CREATE TABLE `barang_keluar` (
 --
 
 INSERT INTO `barang_keluar` (`id_bkeluar`, `no_bukti`, `tgl_keluar`, `pengurus`, `ket_keluar`, `tanggal`) VALUES
-(3, 'asd', '2023-06-21', 'asd', 'asd', NULL);
+(3, 'asd', '2023-06-21', 'asd', 'asd', NULL),
+(4, 'K-001', '2023-06-22', 'UJANG', '-', '2023-06-23');
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,8 @@ CREATE TABLE `barang_masuk` (
 
 INSERT INTO `barang_masuk` (`id_bmasuk`, `no_bukti`, `tgl_masuk`, `pengurus`, `ket_masuk`, `tanggal`) VALUES
 (3, 'asd', '2023-06-20', 'asd', '', '2023-06-20'),
-(4, '111', '2023-06-19', 'aaa', 'asda', '2023-06-20');
+(4, '111', '2023-06-19', 'aaa', 'asda', '2023-06-20'),
+(5, 'B-001', '2023-06-23', 'eva', '-', '2023-06-23');
 
 -- --------------------------------------------------------
 
@@ -141,7 +143,7 @@ CREATE TABLE `pemasok` (
 --
 
 INSERT INTO `pemasok` (`id_pemasok`, `nama`, `alamat`, `kodepos`, `no_hp`, `namakontak`, `email`) VALUES
-(6481898, 'bc', 'b', 'b', 'b', 'b', 'bz');
+(6481898, 'daffa', 'b', 'b', 'b', 'b', 'bz');
 
 -- --------------------------------------------------------
 
@@ -165,7 +167,8 @@ CREATE TABLE `permintaan_barang` (
 
 INSERT INTO `permintaan_barang` (`id_permintaan`, `tgl_permintaan`, `nama_peminta`, `jabatan_permintaan`, `ket_peminta`, `status`, `tanggal`) VALUES
 (1, '2023-06-14', 'asd', 'asd', 'asd', 2, '0000-00-00'),
-(2, '2023-06-14', '', '', '', 0, '2023-06-21');
+(2, '2023-06-14', '', '', '', 0, '2023-06-21'),
+(3, '2023-06-23', 'DANU', 'OPERATOR PT SIAGRA', '-', 1, '2023-06-23');
 
 -- --------------------------------------------------------
 
@@ -186,7 +189,8 @@ CREATE TABLE `persediaan` (
 --
 
 INSERT INTO `persediaan` (`id_persediaan`, `stok_barang`, `stok_minimum`, `id_barang`, `tanggal`) VALUES
-(1, 1001, 20, 7, NULL);
+(1, 1001, 20, 7, NULL),
+(3, 5, 2, 7, '2023-06-23');
 
 -- --------------------------------------------------------
 
@@ -209,7 +213,8 @@ CREATE TABLE `tr_keluar` (
 
 INSERT INTO `tr_keluar` (`id_trkeluar`, `jumlah_keluar`, `id_user`, `id_bkeluar`, `id_barang`, `id_pelanggan`) VALUES
 (3, 0, 1, 3, 7, 1),
-(4, 0, 2, 3, 7, 1);
+(4, 0, 2, 3, 7, 1),
+(5, 10, 2, 4, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -235,7 +240,9 @@ INSERT INTO `tr_masuk` (`id_trmasuk`, `jumlah_masuk`, `id_user`, `id_bmasuk`, `i
 (8, 0, 1, 3, 7, 6481898),
 (9, 0, 1, 3, 7, 6481898),
 (10, 0, 1, 4, 7, 6481898),
-(11, 0, 1, 4, 11, 6481898);
+(11, 0, 1, 4, 11, 6481898),
+(12, 10, 2, 5, 7, 6481898),
+(13, 5, 1, 5, 7, 6481898);
 
 -- --------------------------------------------------------
 
@@ -257,7 +264,9 @@ CREATE TABLE `tr_permintaan` (
 
 INSERT INTO `tr_permintaan` (`id_trpermintaan`, `jumlah_permintaan`, `id_user`, `id_permintaan`, `id_barang`) VALUES
 (3, 1, 1, 1, 7),
-(4, 3, 1, 1, 7);
+(4, 3, 1, 1, 7),
+(5, 5, 2, 3, 7),
+(6, 10, 2, 3, 11);
 
 -- --------------------------------------------------------
 
@@ -281,9 +290,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama_lengkap`, `level`, `email`, `no_telp`, `foto_profil`) VALUES
-(1, 'rafli', 'rafli', 'a', 3, 'a', 'a', 'default.jpg'),
-(2, 'asd', 'asd', 'asd', 1, 'asd@asd.com', '11', '648b4a7f6c742.jpg'),
-(3, '123', '123', '123', 2, '123', '123123', 'default.jpg');
+(1, 'manager', 'manager', 'manager', 3, 'manager@gmail.com', '081238192311', 'default.jpg'),
+(2, 'admin', 'admin', 'admin', 1, 'admin@gmail.com', '081288123123', 'default.jpg'),
+(3, 'pembeli', 'pembeli', 'pembeli', 2, 'pembeli@gmail.com', '01823081021', 'default.jpg');
 
 --
 -- Indexes for dumped tables
@@ -381,13 +390,13 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `barang_keluar`
 --
 ALTER TABLE `barang_keluar`
-  MODIFY `id_bkeluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_bkeluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `barang_masuk`
 --
 ALTER TABLE `barang_masuk`
-  MODIFY `id_bmasuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_bmasuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
@@ -405,31 +414,31 @@ ALTER TABLE `pemasok`
 -- AUTO_INCREMENT for table `permintaan_barang`
 --
 ALTER TABLE `permintaan_barang`
-  MODIFY `id_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `persediaan`
 --
 ALTER TABLE `persediaan`
-  MODIFY `id_persediaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_persediaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tr_keluar`
 --
 ALTER TABLE `tr_keluar`
-  MODIFY `id_trkeluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_trkeluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tr_masuk`
 --
 ALTER TABLE `tr_masuk`
-  MODIFY `id_trmasuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_trmasuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tr_permintaan`
 --
 ALTER TABLE `tr_permintaan`
-  MODIFY `id_trpermintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_trpermintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
