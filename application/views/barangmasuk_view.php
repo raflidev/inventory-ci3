@@ -115,9 +115,11 @@
 
       <div class="card-body">
         <div class="mb-4">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Tambah data
-          </button>
+          <?php if ($this->session->userdata('level') != 3) : ?>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Tambah data
+            </button>
+          <?php endif; ?>
         </div>
         <div class="table-responsive">
           <table class="display table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -128,7 +130,9 @@
                 <th>Tanggal Masuk</th>
                 <th>Pengurus</th>
                 <th>Keterangan Masuk</th>
-                <th>Aksi</th>
+                <?php if ($this->session->userdata('level') != 3) : ?>
+                  <th>Aksi</th>
+                <?php endif; ?>
               </tr>
             </thead>
             <tfoot>
@@ -138,7 +142,9 @@
                 <th>Tanggal Masuk</th>
                 <th>Pengurus</th>
                 <th>Keterangan Masuk</th>
-                <th>Aksi</th>
+                <?php if ($this->session->userdata('level') != 3) : ?>
+                  <th>Aksi</th>
+                <?php endif ?>
               </tr>
             </tfoot>
             <tbody>
@@ -150,17 +156,17 @@
                   <td><?= $data->tgl_masuk ?></td>
                   <td><?= $data->pengurus ?></td>
                   <td><?= $data->ket_masuk ?></td>
-                  <td>
-                    <form action="<?= base_url('barangmasuk/hapus/'), $data->id_bmasuk ?>" method="POST">
-                      <a href="<?= base_url("/tbarangmasuk/index/$data->id_bmasuk") ?>" class="btn btn-info btn-sm">Isi Barang</a>
-                      <button type="button" class="btn btn-warning btn-sm open_modal" data-toggle="modal" value="<?= $data->id_bmasuk ?>" data-target="#EditModal">
-                        Edit
-                      </button>
-                      <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                    </form>
-
-
-                  </td>
+                  <?php if ($this->session->userdata('level') != 3) : ?>
+                    <td>
+                      <form action="<?= base_url('barangmasuk/hapus/'), $data->id_bmasuk ?>" method="POST">
+                        <a href="<?= base_url("/tbarangmasuk/index/$data->id_bmasuk") ?>" class="btn btn-info btn-sm">Isi Barang</a>
+                        <button type="button" class="btn btn-warning btn-sm open_modal" data-toggle="modal" value="<?= $data->id_bmasuk ?>" data-target="#EditModal">
+                          Edit
+                        </button>
+                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                      </form>
+                    </td>
+                  <?php endif ?>
                 </tr>
                 <?php $no++ ?>
               <?php endforeach ?>

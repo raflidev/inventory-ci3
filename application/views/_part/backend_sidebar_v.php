@@ -5,7 +5,7 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= site_url('admin'); ?>">
       <div class="sidebar-brand-text mx-3">PT Nippisun Indonesia</div>
     </a>
 
@@ -43,6 +43,12 @@
           <span>Pelanggan</span></a>
       </li>
 
+      <li class="nav-item <?= ($this->uri->segment(1) == "user" ? 'active' : '') ?>">
+        <a class="nav-link" href="<?= site_url('user'); ?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Manajemen User</span></a>
+      </li>
+
       <li class="nav-item <?= ($this->uri->segment(1) == "barang" ? 'active' : '') ?>">
         <a class="nav-link" href="<?= site_url('barang'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -66,6 +72,7 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Data Stok Barang</span></a>
       </li>
+
     <?php endif; ?>
 
     <?php if ($this->session->userdata('level') == 2 || $this->session->userdata('level') == 1) : ?>
@@ -76,6 +83,12 @@
       </li>
     <?php endif; ?>
 
+    <li class="nav-item <?= ($this->uri->segment(1) == "laporan" ? 'active' : '') ?>">
+      <a class="nav-link" href="<?= site_url('laporan'); ?>">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Laporan</span></a>
+    </li>
+
 
     <?php if ($this->session->userdata('level') == 3) : ?>
       <li class="nav-item <?= ($this->uri->segment(1) == "user" ? 'active' : '') ?>">
@@ -83,6 +96,19 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Manajemen User</span></a>
       </li>
+
+      <li class="nav-item <?= ($this->uri->segment(1) == "barangmasuk" ? 'active' : '') ?>">
+        <a class="nav-link" href="<?= site_url('barangmasuk'); ?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Barang Masuk</span></a>
+      </li>
+
+      <li class="nav-item <?= ($this->uri->segment(1) == "barangkeluar" ? 'active' : '') ?>">
+        <a class="nav-link" href="<?= site_url('barangkeluar'); ?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Barang Keluar</span></a>
+      </li>
+
 
       <li class="nav-item <?= ($this->uri->segment(1) == "laporan" ? 'active' : '') ?>">
         <a class="nav-link" href="<?= site_url('laporan'); ?>">

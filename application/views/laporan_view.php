@@ -47,16 +47,7 @@
                       </div>
                     </div>
                     <div class="form-group focused">
-                      <label class="form-control-label" for="barang">Barang<span class="small text-danger">*</span></label>
-                      <select type="text" id="barang" class="form-control" name="barang">
-                        <option value="semua">-- Semua --</option>
-                        <?php foreach ($barang as $b) : ?>
-                          <option value="<?= $b->id_barang ?>"><?= $b->nama_barang ?></option>
-                        <?php endforeach ?>
-                      </select>
-                    </div>
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="kategori">kategori<span class="small text-danger">*</span></label>
+                      <label class="form-control-label" for="kategori">Kategori<span class="small text-danger">*</span></label>
                       <select type="text" id="kategori" class="form-control" name="kategori">
                         <option value="semua">-- Semua --</option>
                         <?php foreach ($barang as $b) : ?>
@@ -76,3 +67,4 @@
       </div>
     </div>
   </div>
+</div>
