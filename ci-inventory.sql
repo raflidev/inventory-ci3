@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2023 at 02:23 PM
+-- Generation Time: Jul 06, 2023 at 07:15 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -290,9 +290,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama_lengkap`, `level`, `email`, `no_telp`, `foto_profil`) VALUES
-(1, 'manager', 'manager', 'manager', 3, 'manager@gmail.com', '081238192311', 'default.jpg'),
-(2, 'admin', 'admin', 'admin', 1, 'admin@gmail.com', '081288123123', 'default.jpg'),
-(3, 'pembeli', 'pembeli', 'pembeli', 2, 'pembeli@gmail.com', '01823081021', 'default.jpg');
+(1, 'manager', '1d0258c2440a8d19e716292b231e3190', 'manager', 3, 'manager@gmail.com', '081238192311', 'default.jpg'),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 1, 'admin@gmail.com', '081288123123', 'default.jpg'),
+(3, 'pembeli', 'a9f8bbb8cb84375f241ce3b9da6219a1', 'pembeli', 2, 'pembeli@gmail.com', '01823081021', 'default.jpg');
 
 --
 -- Indexes for dumped tables

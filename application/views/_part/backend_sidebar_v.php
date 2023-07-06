@@ -73,6 +73,9 @@
           <span>Data Stok Barang</span></a>
       </li>
 
+
+
+
     <?php endif; ?>
 
     <?php if ($this->session->userdata('level') == 2 || $this->session->userdata('level') == 1) : ?>
@@ -83,11 +86,13 @@
       </li>
     <?php endif; ?>
 
-    <li class="nav-item <?= ($this->uri->segment(1) == "laporan" ? 'active' : '') ?>">
-      <a class="nav-link" href="<?= site_url('laporan'); ?>">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Laporan</span></a>
-    </li>
+    <?php if ($this->session->userdata('level') == 1) : ?>
+      <li class="nav-item <?= ($this->uri->segment(1) == "laporan" ? 'active' : '') ?>">
+        <a class="nav-link" href="<?= site_url('laporan'); ?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Laporan</span></a>
+      </li>
+    <?php endif; ?>
 
 
     <?php if ($this->session->userdata('level') == 3) : ?>

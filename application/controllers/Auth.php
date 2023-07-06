@@ -20,10 +20,7 @@ class Auth extends CI_Controller
     $this->load->model('user_model');
     $user = $this->user_model->get($post["username"]);
 
-
-
     if ($user) {
-      // md5
       if ($user->password == md5($post["password"])) {
         $data = [
           'username' => $user->username,
