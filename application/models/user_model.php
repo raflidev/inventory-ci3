@@ -38,7 +38,7 @@ class user_model extends CI_Model
 
 
     $this->username = $post["username"];
-    $this->password = $post["password"];
+    $this->password = md5($post["password"]);
     $this->nama_lengkap = $post["nama_lengkap"];
     $this->level = $post["level"];
     $this->email = $post["email"];
@@ -63,7 +63,7 @@ class user_model extends CI_Model
 
     $this->id_user = $post["id_user"];
     $this->username = $post["username"];
-    $this->password = $post["password"];
+    $this->password = md5($post["password"]);
     $this->nama_lengkap = $post["nama_lengkap"];
     $this->level = $post["level"];
     $this->email = $post["email"];

@@ -23,7 +23,8 @@ class Auth extends CI_Controller
 
 
     if ($user) {
-      if ($user->password == $post["password"]) {
+      // md5
+      if ($user->password == md5($post["password"])) {
         $data = [
           'username' => $user->username,
           'nama_lengkap' => $user->nama_lengkap,
