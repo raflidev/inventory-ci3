@@ -94,6 +94,9 @@ $base64 = 'data:image/jpg;base64,' . base64_encode($data2);
       } ?>
     </tbody>
   </table>
+  <div style="position:absolute;bottom:0px;right:0px">
+    <?php echo "<p style='font-size:16px'>print tanggal " . date("d-m-Y") . "</p>"; ?>
+  </div>
 </body>
 
 </html>
