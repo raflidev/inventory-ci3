@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+$path = base_url("/assets/backend/img/logo.jpg");
+$data2 = file_get_contents($path);
+$base64 = 'data:image/jpg;base64,' . base64_encode($data2);
+?>
 
 <head>
   <meta charset="UTF-8">
@@ -42,15 +47,15 @@
 </head>
 
 <body>
-  <div style="text-align:center;font-size:20px">
+  <div style="text-align:center;font-size:20px;position:relative">
+    <img src="<?= $base64 ?>" width="100" alt="" style="position: absolute;left:0px;z-index:0" srcset="">
     <h3><?= $title ?></h3>
     <?php
+    if ($tgl_mulai == NULL && $tgl_akhir == NULL) {
+      echo "<p style='font-size:16px'>Periode " . date("d-m-Y") . "</p>";
+    }
     if (isset($tgl_mulai) && isset($tgl_akhir)) {
-      if ($tgl_mulai == $tgl_akhir) {
-        echo "<p style='font-size:16px'>Periode " . date("d-m-Y", strtotime($tgl_mulai)) . "</p>";
-      } else {
-        echo "<p style='font-size:16px'>Periode " . date("d-m-Y", strtotime($tgl_mulai)) . " s/d " . date("d-m-Y", strtotime($tgl_akhir)) . "</p>";
-      }
+      echo "<p style='font-size:16px'>Periode " . date("d-m-Y", strtotime($tgl_mulai)) . " s/d " . date("d-m-Y", strtotime($tgl_akhir)) . "</p>";
     }
     ?>
   </div>

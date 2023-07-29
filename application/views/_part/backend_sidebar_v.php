@@ -19,6 +19,11 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+      <li class="nav-item <?= ($this->uri->segment(1) == "perusahaan" ? 'active' : '') ?>">
+        <a class="nav-link" href="<?= site_url('perusahaan'); ?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Profil Perusahaan</span></a>
+      </li>
     <?php endif; ?>
 
     <!-- Divider -->
